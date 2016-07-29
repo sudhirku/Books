@@ -44,162 +44,149 @@ coord.X = x; coord.Y = y; // X and Y coordinates
 SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
-struct meroDate
-{
-int mm,dd,yy;
-};
-struct books
-{
-int id;
-char stname[20];
-char name[20];
-char Author[20];
-int quantity;
-float Price;
-int count;
-int rackno;
-char *cat;
-struct meroDate issued;
-struct meroDate duedate;
-};
+struct meroDate{
+	int mm,dd,yy;
+	};
+struct books{
+	int id, quantity, count, rackno;
+	char *cat, stname[20], name[20], Author[20];
+	float Price;
+	struct meroDate issued;
+	struct meroDate duedate;
+	};
 struct books a;
-int main()
-{
-Password();
-getch();
-return 0;
 
+int main(){
+	Password();
+	getch();
+	return 0;
 }
 void mainmenu()
 {
-//loaderanim();
-system("cls");
-//    textbackground(13);
-int i;
-gotoxy(20,3);
-printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2 MAIN MENU \xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
-//    show_mouse();
-gotoxy(20,5);
-printf("\xDB\xDB\xDB\xDB\xB2 1. Add Books   ");
-gotoxy(20,7);
-printf("\xDB\xDB\xDB\xDB\xB2 2. Delete books");
-gotoxy(20,9);
-printf("\xDB\xDB\xDB\xDB\xB2 3. Search Books");
-gotoxy(20,11);
-printf("\xDB\xDB\xDB\xDB\xB2 4. Issue Books");
-gotoxy(20,13);
-printf("\xDB\xDB\xDB\xDB\xB2 5. View Book list");
-gotoxy(20,15);
-printf("\xDB\xDB\xDB\xDB\xB2 6. Edit Book's Record");
-gotoxy(20,17);
-printf("\xDB\xDB\xDB\xDB\xB2 7. Close Application");
-gotoxy(20,19);
-printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
-gotoxy(20,20);
-t();
-gotoxy(20,21);
-printf("Enter your choice:");
-switch(getch())
-{
-case '1':
-addbooks();
-break;
-case '2':
-deletebooks();
-break;
-case '3':
-searchbooks();
-break;
-case '4':
-issuebooks();
-break;
-case '5':
-viewbooks();
-break;
-case '6':
-editbooks();
-break;
-case '7':
-{
-system("cls");
-gotoxy(16,3);
-printf("\tLibrary Management System");
-gotoxy(16,4);
-printf("******************************************");
-gotoxy(16,5);
-printf("******************************************");
-gotoxy(16,7);
-printf("\t Sudhir Kumar");
-gotoxy(16,8);
-printf("\t IIT Guwahati");
-gotoxy(16,10);
-printf("\t Roll Number- 140121038");
-gotoxy(16,11);
-printf("*******************************************");
-gotoxy(16,13);
-printf("********************************************");
-gotoxy(10,17);
-printf("\t  T H E     E N D  \t>");
-//flushall();
-Sleep(3000);
-exit(0);
-}
-default:
-{
-gotoxy(10,23);
-printf("\aWrong Entry!!Please re-entered correct option");
-if(getch())
-mainmenu();
+	system("cls");
+	int i;
+	gotoxy(20,3);
+	printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2 MAIN MENU \xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
+	gotoxy(20,5);
+	printf("\xDB\xDB\xDB\xDB\xB2 1. Add Books   ");
+	gotoxy(20,7);
+	printf("\xDB\xDB\xDB\xDB\xB2 2. Delete books");
+	gotoxy(20,9);
+	printf("\xDB\xDB\xDB\xDB\xB2 3. Search Books");
+	gotoxy(20,11);
+	printf("\xDB\xDB\xDB\xDB\xB2 4. Issue Books");
+	gotoxy(20,13);
+	printf("\xDB\xDB\xDB\xDB\xB2 5. View Book list");
+	gotoxy(20,15);
+	printf("\xDB\xDB\xDB\xDB\xB2 6. Edit Book's Record");
+	gotoxy(20,17);
+	printf("\xDB\xDB\xDB\xDB\xB2 7. Close Application");
+	gotoxy(20,19);
+	printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
+	gotoxy(20,20);
+	t();
+	gotoxy(20,21);
+	printf("Enter your choice:");
+	switch(getch())
+	{
+	case '1':
+		addbooks();
+		break;
+	case '2':
+		deletebooks();
+		break;
+	case '3':
+		searchbooks();
+		break;
+	case '4':
+		issuebooks();
+		break;
+	case '5':
+		viewbooks();
+		break;
+	case '6':
+		editbooks();
+		break;
+	case '7':
+		{
+			system("cls");
+			gotoxy(16,3);
+			printf("\tLibrary Management System");
+			gotoxy(16,4);
+			printf("******************************************");
+			gotoxy(16,5);
+			printf("******************************************");
+			gotoxy(16,7);
+			printf("\t Sudhir Kumar");
+			gotoxy(16,8);
+			printf("\t IIT Guwahati");
+			gotoxy(16,10);
+			printf("\t Roll Number- 140121038");
+			gotoxy(16,11);
+			printf("*******************************************");
+			gotoxy(16,13);
+			printf("********************************************");
+			gotoxy(10,17);
+			printf("\t  T H E     E N D  \t>");
+			Sleep(3000);
+			exit(0);
+		}
+	default:
+		{
+			gotoxy(10,23);
+			printf("\aWrong Entry!!Please re-entered correct option");
+			if(getch())
+				mainmenu();
+		}
+	}
 }
 
-}
-}
 void addbooks(void)    //funtion that add books
 {
-system("cls");
-int i;
-gotoxy(20,5);
-printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2SELECT CATEGOIES\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
-gotoxy(20,7);
-printf("\xDB\xDB\xDB\xDB\xB2 1. Computer");
-gotoxy(20,9);
-printf("\xDB\xDB\xDB\xDB\xB2 2. Electronics");
-gotoxy(20,11);
-printf("\xDB\xDB\xDB\xDB\xB2 3. Electrical");
-gotoxy(20,13);
-printf("\xDB\xDB\xDB\xDB\xB2 4. Civil");
-gotoxy(20,15);
-printf("\xDB\xDB\xDB\xDB\xB2 5. Mechanical");
-gotoxy(20,17);
-printf("\xDB\xDB\xDB\xDB\xB2 6. Architecture");
-gotoxy(20,19);
-printf("\xDB\xDB\xDB\xDB\xB2 7. Back to main menu");
-gotoxy(20,21);
-printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
-gotoxy(20,22);
-printf("Enter your choice:");
-scanf("%d",&s);
-if(s==7)
-
-mainmenu() ;
-system("cls");
-fp=fopen("Bibek.dat","ab+");
-if(getdata()==1)
-{
-a.cat=catagories[s-1];
-fseek(fp,0,SEEK_END);
-fwrite(&a,sizeof(a),1,fp);
-fclose(fp);
-gotoxy(21,14);
-printf("The record is sucessfully saved");
-gotoxy(21,15);
-printf("Save any more?(Y / N):");
-if(getch()=='n')
-mainmenu();
-else
-system("cls");
-addbooks();
-}
+	system("cls");
+	int i;
+	gotoxy(20,5);
+	printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2SELECT CATEGOIES\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
+	gotoxy(20,7);
+	printf("\xDB\xDB\xDB\xDB\xB2 1. Computer");
+	gotoxy(20,9);
+	printf("\xDB\xDB\xDB\xDB\xB2 2. Electronics");
+	gotoxy(20,11);
+	printf("\xDB\xDB\xDB\xDB\xB2 3. Electrical");
+	gotoxy(20,13);
+	printf("\xDB\xDB\xDB\xDB\xB2 4. Civil");
+	gotoxy(20,15);
+	printf("\xDB\xDB\xDB\xDB\xB2 5. Mechanical");
+	gotoxy(20,17);
+	printf("\xDB\xDB\xDB\xDB\xB2 6. Architecture");
+	gotoxy(20,19);
+	printf("\xDB\xDB\xDB\xDB\xB2 7. Back to main menu");
+	gotoxy(20,21);
+	printf("\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2\xB2");
+	gotoxy(20,22);
+	printf("Enter your choice:");
+	scanf("%d",&s);
+	
+	if(s==7)
+		mainmenu() ;
+	system("cls");
+	fp=fopen("Bibek.dat","ab+");
+	if(getdata()==1)
+		{
+			a.cat=catagories[s-1];
+			fseek(fp,0,SEEK_END);
+			fwrite(&a,sizeof(a),1,fp);
+			fclose(fp);
+			gotoxy(21,14);
+			printf("The record is sucessfully saved");
+			gotoxy(21,15);
+			printf("Save any more?(Y / N):");
+			if(getch()=='n')
+			  mainmenu();
+			else
+				system("cls");
+				addbooks();
+		}
 }
 void deletebooks()    //function that delete items from file fp
 {
